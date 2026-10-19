@@ -8,8 +8,10 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(include/SDL EXCLUDE_FROM_ALL)
 
+add_subdirectory(engine)
+
 add_executable(BitEngine
-    engine/engine.c
+    engine/main.c
 )
 
 target_include_directories(BitEngine PRIVATE
@@ -18,6 +20,7 @@ target_include_directories(BitEngine PRIVATE
 
 target_link_libraries(BitEngine PRIVATE
     SDL3::SDL3
+    BitEngineCore
 )
 
 add_custom_command(TARGET BitEngine POST_BUILD
